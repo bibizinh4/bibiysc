@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos de Papelaria</title>
+    <style>
+        /* Estilos semelhantes aos anteriores */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            width: 60%;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cadastro de Produtos de Papelaria</h1>
+        <form id="productForm">
+            <label for="productName">Nome do Produto:</label>
+            <input type="text" id="productName" value="Caneta Esferográfica Azul" required>
+
+            <label for="productCategory">Categoria:</label>
+            <select id="productCategory" required>
+                <option value="canetas">Canetas</option>
+                <option value="papel">Papel</option>
+                <option value="livros">Livros</option>
+                <option value="outros">Outros</option>
+            </select>
+
+            <label for="productPrice">Preço:</label>
+            <input type="number" id="productPrice" value="2.50" required step="0.01">
+
+            <label for="productQuantity">Quantidade em Estoque:</label>
+            <input type="number" id="productQuantity" value="150" required>
+
+            <label for="productDescription">Descrição:</label>
+            <textarea id="productDescription" rows="4" required>Caneta esferográfica de tinta azul, ideal para escrever e fazer anotações rápidas.</textarea>
+
+            <label for="productBrand">Marca:</label>
+            <input type="text" id="productBrand" value="BIC" required>
+
+            <label for="productColor">Cor:</label>
+            <input type="text" id="productColor" value="Azul">
+
+            <label for="productSize">Tamanho:</label>
+            <input type="text" id="productSize" value="Padrão">
+
+            <label for="productSupplier">Fornecedor:</label>
+            <input type="text" id="productSupplier" value="Distribuidora ABC" required>
+
+            <label for="productDate">Data de Cadastro:</label>
+            <input type="date" id="productDate" value="2024-11-13" required>
+
+            <button type="submit">Cadastrar Produto</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('productForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio tradicional do formulário
+
+            // Coleta os dados do formulário
+            const formData = {
+                name: document.getElementById('productName').value,
+                category: document.getElementById('productCategory').value,
+                price: document.getElementById('productPrice').value,
+                quantity: document.getElementById('productQuantity').value,
+                description: document.getElementById('productDescription').value,
+                brand: document.getElementById('productBrand').value,
+                color: document.getElementById('productColor').value,
+                size: document.getElementById('productSize').value,
+                supplier: document.getElementById('productSupplier').value,
+                date: document.getElementById('productDate').value,
+            };
+
+            // Armazena os dados no localStorage
+            localStorage.setItem('productData', JSON.stringify(formData));
+
+            // Redireciona para a página de resultados
+            window.location.href = 'result.html';
+        });
+    </script>
+
+</body>
+</html>
